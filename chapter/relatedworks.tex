@@ -1,0 +1,36 @@
+During the past few years, many works on various single-label and 
+multi-label image classification models have been conducted. These models are generally based on deep learning.
+
+\subsection{Deep Learning Based Models}
+
+Deep learning tries to model the high-level abstractions of visual data by using architectures composed of multiple non-linear transformations. Specifically, deep convolutional neural network (CNN)
+has demonstrated an extraordinary ability for image classification on single-label datasets such as CIFAR-10/100 \cite{4} and ImageNet \cite{3}. A. Krizhevsky et al. \cite{3}  trained one of the largest convolutional
+neural networks to date on the subsets of ImageNet used in the ILSVRC-2010 and ILSVRC-2012
+competitions. Their network contains
+a number of new and unusual features which improve its performance. The size of their network made overfitting a significant problem, even
+with 1.2 million labeled training examples, so they used several effective techniques for preventing
+overfitting. Their final network contains five convolutional and
+three fully-connected layers, and this depth seems to be important: they found that removing any
+convolutional layer (each of which contains no more than 1\% of the model’s parameters) resulted in
+inferior performance.\\
+But their network is huge and complex. Their network’s size is limited mainly by the amount of memory available on current GPUs
+and by the amount of training time that they are willing to tolerate. Their network takes between five
+and six days to train on two GTX 580 3GB GPUs. All of their experiments suggest that their results
+can be improved simply by waiting for faster GPUs and bigger datasets to become available.\\
+More recently, CNN architectures have been
+adopted to address multi-label problems. Gong et
+al. \cite{5} studied and compared several multi-label
+loss functions for the multi-label annotation problem
+based on a similar network structure to \cite{3}.\\
+However,
+due to the large number of parameters to be learned
+for CNN, an effective model requires lots of training
+samples. Therefore, training a task-specific convolutional neural network is not applicable on datasets
+with limited numbers of training samples.
+
+
+
+
+
+
+

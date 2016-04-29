@@ -1,0 +1,175 @@
+\subsection{Experimental Result for CIFAR-10}
+
+In the Table \ref{cifar10conf} there is the result for the testing images of CIFAR-10 dataset. Here, each row represents the testing label, each column represents the label produced by the network. For example the cell (1,1) represents that the testing label is airplane and the tagged label is airplane, the cell (1,2) represents that the testing label is airplane and the tagged label is automobile. So, each cell (i,i) where $[i = 1..10]$ represents the correctly tagged labels. Each row consists of 1000 image labels. So the accuracy will be cell$(i,i)/1000$.
+
+%\begin{table}[!htb] 
+% \centering
+%  \includegraphics[width=0.9\textwidth]{images/cifar10.PNG}
+%  \caption{CIFAR-10 Confusion Matrix}
+%  \label{cifar10conf}
+%\end{table}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+\setlength{\extrarowheight}{1pt} % filler text
+\begin{table*}
+ \caption{CIFAR-10 Confusion Matrix}
+\label{cifar10conf}
+\begin{tabularx}{\textwidth}{@{}l*{10}{C}c@{}}
+\toprule
+labels     & airplane & automobile & bird & cat & deer & dog & frog & horse & ship & truck & accuracy \\ 
+\midrule
+airplane   & 915      & 4          & 17   & 19  & 3    & 1   & 0    & 2     & 27   & 12    & 91.50\%  \\ 
+automobile & 8        & 934        & 3    & 4   & 0    & 0   & 3    & 0     & 10   & 38    & 93.40\%  \\ 
+bird       & 60       & 1          & 813  & 37  & 19   & 23  & 30   & 10    & 7    & 0     & 81.30\%  \\ 
+cat        & 18       & 1          & 34   & 746 & 25   & 113 & 37   & 18    & 8    & 0     & 74.60\%  \\ 
+deer       & 24       & 1          & 38   & 33  & 809  & 19  & 44   & 29    & 2    & 1     & 80.90\%  \\ 
+dog        & 4        & 0          & 37   & 106 & 23   & 792 & 9    & 26    & 2    & 1     & 79.20\%  \\ 
+frog       & 2        & 5          & 19   & 35  & 1    & 20  & 912  & 2     & 3    & 1     & 91.20\%  \\ 
+horse      & 14       & 0          & 26   & 20  & 18   & 28  & 4    & 886   & 3    & 1     & 88.60\%  \\ 
+ship       & 35       & 10         & 3    & 2   & 0    & 2   & 1    & 0     & 936  & 11    & 93.60\%  \\ 
+truck      & 23       & 37         & 4    & 10  & 1    & 2   & 2    & 0     & 15   & 906   & 90.60\%  \\ 
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+
+\subsection{Experimental Result for Multi-Label Image tagging}
+To give an overview of the process of inspecting the result of the segmented images, we will need the help of Table \ref{score}. The table is for a single multi-label image. Each $image_{i}$ represents the segmented image from the multi-label image. Each row represents the class scores given by the network. 
+
+\paragraph{Selecting Top-1 Score:}
+In this approach we select the top 1 score and its associating label from each segmented image $image_{i}$. Then we increase the frequency of labels for each top 1 score. After that we select the top 4 scoring labels. For example, in the Table \ref{score} the top 1 label for $image_{1}$ would be cat. So we increase the frequency of cat by 1. Similarly for $image_{2}$ again the score for label cat is highest. So frequency of cat will be increased by 1.
+
+%\begin{table}[!htb]
+% \centering
+%  \includegraphics[width=0.9\textwidth]{images/newresult.PNG}
+%  \caption{Scores for the sample image}
+%  \label{score}
+%\end{table}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+\setlength{\extrarowheight}{1pt} % filler text
+\begin{table*}
+ \caption{Scores for the sample image}
+\label{score}
+\begin{tabularx}{\textwidth}{@{}l*{10}{C}c@{}}
+\toprule
+ Images    & airplane & automobile & bird & cat & deer & dog & frog & horse & ship & truck \\ 
+\midrule
+Image-1   & 0.9217  & 0.0298  & 1.4209  & 46.4491  & 36.0700 & 2.5067 & 1.6066  & 0.5272  & 0.0714   & 0.3829     \\ 
+Image-2 & 1.4132  & 0.0659  & 7.7162  & 62.3326   & 1.1682     & 2.3488   & 1.5611    & 0.2317     & 0.2492 & 0.2310      \\ 
+Image-3       & 0.4459       & 0.0162          & 58.4923  & 246.7195  & 1.1131   & 8.1225  & 2.1280   & 0.4308    & 0.0539    & 0.1051       \\ 
+Image-4        & 1.0044       & 0.0395          & 1.7086   & 51.9305 & 6.6794   & 3.5150 & 0.9439   & 1.1725    & 0.1186    & 0.3051       \\ 
+Image-5       & 0.3337       & 0.0217          & 5.7818   & 347.2959  & 1.9758  & 11.4527  & 1.7994   & 0.7569    & 0.0565    & 0.1809       \\ 
+Image-6        & 1.3842        & 0.0419          & 8.2234   & 40.1665 & 3.7619   & 1.3729 & 2.1954    & 0.3672    & 0.1542    & 0.2732       \\ 
+Image-7       & 1.6438        & 0.0423          & 19.3501   & 62.6969  & 1.6350    & 2.1218  & 1.9803  & 0.3463     & 0.1220    & 0.1529       \\ 
+Image-8      & 0.7810       & 0.0442          & 2.1775   & 35.6856  & 11.8591   & 1.5890  & 3.8482    & 0.3406   & 0.1322    & 0.3772       \\ 
+Image-9      & 1.5966       & 0.0967         & 2.3003    & 66.9341   & 0.7218    & 8.9363   & 0.3764    & 1.1311     & 0.2680  & 0.1924      \\ 
+Image-10      & 0.8212       & 0.0312         & 8.5449    & 62.8961  & 5.5377    & 2.0566   & 2.6111    & 0.3208     & 0.1013   & 0.2574     \\ 
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+
+\paragraph{Selecting Top-2 Score:}
+In this approach we select the top 2 scores and its associating label from each segmented image $image_{i}$. Then we increase the frequency of labels for each top 2 scores. After that we select the top 4 scoring labels.  For example, in the Table \ref{score} the top 2 labels for $image_{1}$ would be cat and deer. So the frequency of cat and deer will be increased by 1.
+
+
+%\begin{table}[!htb]
+%\centering
+%  \includegraphics[width=0.9\textwidth]{images/result_objectness.PNG}
+%  \caption{Result for the sample image for Objectness Measures}
+%   \label{resobj}
+%\end{table}
+
+%\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+%\setlength{\extrarowheight}{1pt} % filler text
+%\begin{table*}
+% \caption{Result for the sample image for Objectness Measures}
+%\label{my-label}
+%\begin{tabularx}{\textwidth}{@{}l*{10}{C}c@{}}
+%\toprule
+%Top Labels     & Label-1 & Label-2 & Label-3 & Label-4  \\ 
+%\midrule
+%Top-1          & cat      & bird         & airplane   & dog    \\ 
+%Top-2          & cat      & bird         & deer       & dog    \\ 
+%Cumulative     & cat      & deer         & bird       & dog    \\ 
+%Total Score    & cat      & bird         & deer       & dog   \\ 
+%\bottomrule
+%\end{tabularx}
+%\end{table*}
+
+\begin{table}
+\centering
+\caption{Result for the sample image for Objectness Measures}
+\label{resobj}
+\begin{tabularx}{\linewidth}{|*{5}{X|}}
+\hline
+Labels      & Label-1 & Label-2 & Label-3 & Label-4 \\ \hline
+Top-1       & cat     & bird   & airplane & dog           \\ \hline
+Top-2       & cat     & bird   & deer     & dog           \\ \hline
+Cumulative  & cat     & deer   & bird     & dog            \\ \hline
+Total Score & cat     & bird   & deer     & dog           \\ \hline
+\end{tabularx}
+\end{table}
+\paragraph{Selecting Total Score:}
+In this approach we just add all scores of each $label_{i}$ for each segmented image $image_{i}$. Then we select the top 4 scoring labels. For example, every class score for every label will be added. So, the score for cat label will be the total score in the column cat. Similarly the score for bird will be the total score in the column bird.
+
+\begin{table}
+\centering
+\caption{Result for the sample image for Selective Search}
+\label{ressel}
+\begin{tabularx}{\linewidth}{|*{5}{X|}}
+\hline
+Labels      & Label-1 & Label-2 & Label-3 & Label-4 \\ \hline
+Top-1       & bird    & cat     & frog    & dog           \\ \hline
+Top-2       & cat     & bird    & dog     & frog           \\ \hline
+Cumulative  & cat     & frog    & bird    & dog            \\ \hline
+Total Score & cat     & frog    & bird    & dog           \\ \hline
+\end{tabularx}
+\end{table}
+
+%\begin{figure}[h!]
+%  \centering
+%  \includegraphics[width=0.9\textwidth]{result_selective.PNG}
+%  \caption{Result for the sample image for Selective Search}\label{ressel}
+%\end{figure}
+
+%\begin{table}[!htb]
+%\centering
+%  \includegraphics[width=0.9\textwidth]{images/result_selective.PNG}
+%  \caption{Result for the sample image for Selective Search}
+%  \label{ressel}
+%\end{table}
+
+\paragraph{Selecting Cumulative Percentage:}
+Each $label_{i}$ of segmented image $image_{i}$ has the percentage $score_{i} / \sum_{i}{score_{i}}$. We select the top percentage from each segmented image $image_{i}$. We add these percentages for each associated labels and select the top 4 scoring labels. For example for $image_{1}$ the percentage of cat will be $score_{cat} / \sum_{i}{score_{i}}$.\hfill \break
+
+The results for these four approaches for the sample image from Figure \ref{sample_multi_label} is given at Table \ref{resobj} and Table \ref{ressel} \hfill \break
+
+
+These approaches were repeated in our selected multi label images. The results for Objectness Measure is given in Figure \ref{finobj} and for Selective Search in Figure  \ref{finsel}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/sample_multi_label.PNG}
+  \caption{Sample Multi-Label Image}\label{sample_multi_label}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/Capture3.PNG}
+  \caption{Result for multi-label images for Objectness Measures}\label{finobj}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/Capture4.PNG}
+  \caption {Result for multi-label images for Selective Search}\label{finsel}
+\end{figure}
+
+\section{Discussion}
+
+The main problem of tagging multi-label images are the training time required. If Convolutional Neural Network is used for tagging multiple labels, then there is a chance that the networks will be very complex. This will require a lot of time to train. Also, if it takes a lot of time to train, then tweaking the network and exploring promising functionalities will require a lot of time. But our Convolutional Neural Network can only tag Single Label images, then we use this network to tag the segmented images provided by Objectness Measures and Selective Search approach. The Convolutional Neural Network we provided is faster to train, so tweaking the network will provide quick result. We got about 57\% accuracy using the Selective Search approach shown in \ref{finsel}. So, we can expect that if we increase the capability of our network, this accuracy will be much higher.
+
