@@ -134,11 +134,9 @@ a single region.
 \subsection{Architecture For Classifying Multi-Label Images}
 
 Our Final architecture for detecting multi-label images consists of (1) image segmentation and (2) convolutional neural network for detecting segmented images. The image segmentation techniques, objectness measures and selective search and the architecture for single label image detection has been described before. In the Figure \ref{finalarch} there is an overview of the architecture.
-
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.4\textwidth]{images/finalarch.png}
   \caption{Architecture of Convolutional Neural Network}\label{finalarch}
 \end{figure}
-
 At first we split the image with objectness measures and selective search. Then we get multiple split images. Note that there will be many split images. In the figure only a few are shown. Then we pass the split images through the convolutional neural network that classifies the label associated with that image. As there are many split images, there may be some labels that will be wrongly classified. We inspect these labels and their associative scores and finally conclude which of the labels are likely to be associated with the images. We performed several techniques for inspecting the images. These are discussed in the experimental result section.

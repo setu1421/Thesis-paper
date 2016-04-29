@@ -114,6 +114,16 @@ Total Score & cat     & bird   & deer     & dog           \\ \hline
 \paragraph{Selecting Total Score:}
 In this approach we just add all scores of each $label_{i}$ for each segmented image $image_{i}$. Then we select the top 4 scoring labels. For example, every class score for every label will be added. So, the score for cat label will be the total score in the column cat. Similarly the score for bird will be the total score in the column bird.
 
+
+
+\paragraph{Selecting Cumulative Percentage:}
+Each $label_{i}$ of segmented image $image_{i}$ has the percentage $score_{i} / \sum_{i}{score_{i}}$. We select the top percentage from each segmented image $image_{i}$. We add these percentages for each associated labels and select the top 4 scoring labels. For example for $image_{1}$ the percentage of cat will be $score_{cat} / \sum_{i}{score_{i}}$.\hfill \break
+
+The results for these four approaches for the sample image from Figure \ref{sample_multi_label} is given at Table \ref{resobj} and Table \ref{ressel} \hfill \break
+
+
+These approaches were repeated in our selected multi label images. The results for Objectness Measure is given in Figure \ref{finobj} and for Selective Search in Figure  \ref{finsel}
+
 \begin{table}
 \centering
 \caption{Result for the sample image for Selective Search}
@@ -128,42 +138,21 @@ Total Score & cat     & frog    & bird    & dog           \\ \hline
 \end{tabularx}
 \end{table}
 
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[width=0.9\textwidth]{result_selective.PNG}
-%  \caption{Result for the sample image for Selective Search}\label{ressel}
-%\end{figure}
-
-%\begin{table}[!htb]
-%\centering
-%  \includegraphics[width=0.9\textwidth]{images/result_selective.PNG}
-%  \caption{Result for the sample image for Selective Search}
-%  \label{ressel}
-%\end{table}
-
-\paragraph{Selecting Cumulative Percentage:}
-Each $label_{i}$ of segmented image $image_{i}$ has the percentage $score_{i} / \sum_{i}{score_{i}}$. We select the top percentage from each segmented image $image_{i}$. We add these percentages for each associated labels and select the top 4 scoring labels. For example for $image_{1}$ the percentage of cat will be $score_{cat} / \sum_{i}{score_{i}}$.\hfill \break
-
-The results for these four approaches for the sample image from Figure \ref{sample_multi_label} is given at Table \ref{resobj} and Table \ref{ressel} \hfill \break
-
-
-These approaches were repeated in our selected multi label images. The results for Objectness Measure is given in Figure \ref{finobj} and for Selective Search in Figure  \ref{finsel}
-
-\begin{figure}[h!]
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{images/sample_multi_label.PNG}
   \caption{Sample Multi-Label Image}\label{sample_multi_label}
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{images/Capture3.PNG}
   \caption{Result for multi-label images for Objectness Measures}\label{finobj}
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{images/Capture4.PNG}
   \caption {Result for multi-label images for Selective Search}\label{finsel}
