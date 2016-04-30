@@ -1,6 +1,6 @@
 \subsection{Experimental Result for CIFAR-10}
 
-In the Table \ref{cifar10conf} there is the result for the testing images of CIFAR-10 dataset. Here, each row represents the testing label, each column represents the label produced by the network. For example the cell (1,1) represents that the testing label is airplane and the tagged label is airplane, the cell (1,2) represents that the testing label is airplane and the tagged label is automobile. So, each cell (i,i) where $[i = 1..10]$ represents the correctly tagged labels. Each row consists of 1000 image labels. So the accuracy will be cell$(i,i)/1000$.
+In the Table \ref{cifar10conf} there is the result for the testing images of CIFAR-10 dataset. Here, each row represents the testing label, each column represents the label produced by the network. For example the cell (1,1) represents that the testing label is airplane and the classified label is airplane, the cell (1,2) represents that the testing label is airplane and the classified label is automobile. So, each cell (i,i) where $[i = 1..10]$ represents the correctly classified labels. Each row consists of 1000 image labels. So the accuracy will be cell$(i,i)/1000$.
 
 %\begin{table}[!htb] 
 % \centering
@@ -33,10 +33,10 @@ truck      & 23       & 37         & 4    & 10  & 1    & 2   & 2    & 0     & 15
 \end{table*}
 
 
-\subsection{Experimental Result for Multi-Label Image tagging}
+\subsection{Experimental Result for Multi-Label Image classification}
 To give an overview of the process of inspecting the result of the segmented images, we will need the help of Table \ref{score}. The table is for a single multi-label image. Each $image_{i}$ represents the segmented image from the multi-label image. Each row represents the class scores given by the network. 
 
-\paragraph{Selecting Top-1 Score:}
+\paragraph{Selecting Top-1 Score}
 In this approach we select the top 1 score and its associating label from each segmented image $image_{i}$. Then we increase the frequency of labels for each top 1 score. After that we select the top 4 scoring labels. For example, in the Table \ref{score} the top 1 label for $image_{1}$ would be cat. So we increase the frequency of cat by 1. Similarly for $image_{2}$ again the score for label cat is highest. So frequency of cat will be increased by 1.
 
 %\begin{table}[!htb]
@@ -70,7 +70,7 @@ Image-10      & 0.8212       & 0.0312         & 8.5449    & 62.8961  & 5.5377   
 \end{table*}
 
 
-\paragraph{Selecting Top-2 Score:}
+\paragraph{Selecting Top-2 Score}
 In this approach we select the top 2 scores and its associating label from each segmented image $image_{i}$. Then we increase the frequency of labels for each top 2 scores. After that we select the top 4 scoring labels.  For example, in the Table \ref{score} the top 2 labels for $image_{1}$ would be cat and deer. So the frequency of cat and deer will be increased by 1.
 
 
@@ -111,12 +111,12 @@ Cumulative  & cat     & deer   & bird     & dog            \\ \hline
 Total Score & cat     & bird   & deer     & dog           \\ \hline
 \end{tabularx}
 \end{table}
-\paragraph{Selecting Total Score:}
+\paragraph{Selecting Total Score}
 In this approach we just add all scores of each $label_{i}$ for each segmented image $image_{i}$. Then we select the top 4 scoring labels. For example, every class score for every label will be added. So, the score for cat label will be the total score in the column cat. Similarly the score for bird will be the total score in the column bird.
 
 
 
-\paragraph{Selecting Cumulative Percentage:}
+\paragraph{Selecting Cumulative Percentage}
 Each $label_{i}$ of segmented image $image_{i}$ has the percentage $score_{i} / \sum_{i}{score_{i}}$. We select the top percentage from each segmented image $image_{i}$. We add these percentages for each associated labels and select the top 4 scoring labels. For example for $image_{1}$ the percentage of cat will be $score_{cat} / \sum_{i}{score_{i}}$.\hfill \break
 
 The results for these four approaches for the sample image from Figure \ref{sample_multi_label} is given at Table \ref{resobj} and Table \ref{ressel} \hfill \break
@@ -160,5 +160,5 @@ Total Score & cat     & frog    & bird    & dog           \\ \hline
 
 \section{Discussion}
 
-The main problem of tagging multi-label images are the training time required. If Convolutional Neural Network is used for tagging multiple labels, then there is a chance that the networks will be very complex. This will require a lot of time to train. Also, if it takes a lot of time to train, then tweaking the network and exploring promising functionalities will require a lot of time. But our Convolutional Neural Network can only tag Single Label images, then we use this network to tag the segmented images provided by Objectness Measures and Selective Search approach. The Convolutional Neural Network we provided is faster to train, so tweaking the network will provide quick result. We got about 57\% accuracy using the Selective Search approach shown in \ref{finsel}. So, we can expect that if we increase the capability of our network, this accuracy will be much higher.
+The main problem of classifying multi-label images are the training time required. If Convolutional Neural Network is used for classifying multiple labels, then there is a chance that the networks will be very complex. This will require a lot of time to train. Also, if it takes a lot of time to train, then tweaking the network and exploring promising functionalities will require a lot of time. But our Convolutional Neural Network can only classify Single Label images, then we use this network to classify the segmented images provided by Objectness Measures and Selective Search approach. The Convolutional Neural Network we provided is faster to train, so tweaking the network will provide quick result. We got about 57\% accuracy using the Selective Search approach shown in \ref{score}. So, we can expect that if we increase the capability of our network, this accuracy will be much higher.
 

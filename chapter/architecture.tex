@@ -5,14 +5,14 @@ the each layer of Convolutional Neural Network from the Figure \ref{singlelabel}
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=.5\textwidth]{images/singlelabel.png}
-  \caption{Convolutional Neural Network for Classifying Single Label Images(Cropped Down)}
+  \caption{Convolutional Neural Network for Classifying Single Label Images}
    \vspace{-.5cm} \label{singlelabel}
 \end{figure} 
 
 
  \paragraph{Spatial Convolution}
   
-  Applies a 2D convolution over an input image composed of several input planes. For an example, Spatial Convolution(3 \(\rightarrow\) 64, 3x3, 1,1, 1,1) means that number of input channel is 3, and the number of output channel is 64. The kernel size is 3x3 and as there are 64 output channels, there will be 64 kernels, each having dimension 3x3. The step of the convolution is 1 step for height and width. The padding is 1 for height and width. Let's visualize this. In the figure \ref{spatialconv} the input neurons are the ones representing each pixel of an image, the kernel size or the filter size is 5x5. This filter would iterate over every single pixel and for each pixel look at the 5x5 neighborhood and produce corresponding images. As the number of output channel is 64, this will be done 64 times.
+  Applies a 2D convolution over an input image composed of several input planes. For an example, Spatial Convolution(3 \(\rightarrow\) 64, 3x3, 1,1, 1,1) means that number of input channel is 3, and the number of output channel is 64. The kernel size is 3x3 and as there are 64 output channels, there will be 64 kernels, each having dimension 3x3. The step of the convolution is 1 step for height and width. The padding is 1 for height and width. Let's visualize this. In the Figure \ref{spatialconv} the input neurons are the ones representing each pixel of an image, the kernel size or the filter size is 5x5. This filter would iterate over every single pixel and for each pixel look at the 5x5 neighborhood and produce corresponding images. As the number of output channel is 64, this will be done 64 times.
   
   \begin{figure}[h!]
   \centering
@@ -23,7 +23,7 @@ the each layer of Convolutional Neural Network from the Figure \ref{singlelabel}
 
 \paragraph{Spatial Batch Normalization}
 
-Implements Batch Normalization as described in the paper FILL. The operation implemented is:
+Implements Batch Normalization as described in the paper \cite{6}. The operation implemented is:
 
  $$y=\frac{x - mean(x)}{standard \textendash deviation(x)} * gamma + beta$$
  
@@ -34,7 +34,7 @@ Implements Batch Normalization as described in the paper FILL. The operation imp
  It is the activation function defined as: $$f(x) = max(0,x)$$.
  
  
- \paragraph{Spatial Max Pooling:}
+ \paragraph{Spatial Max Pooling}
  Applies 2D max-pooling operation. For example, Spatial Max Pooling(2,2,2,2) means that the max pooling will be done with filter 2x2 with step 2 in height and step 2 in width direction. Max pooling means that we will select the maximum value from 2x2 filter or the input area.
  
  
